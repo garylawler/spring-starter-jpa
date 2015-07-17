@@ -1,9 +1,5 @@
 package starter.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +14,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 @Configuration
 @ComponentScan(basePackages = {"starter.app", "starter.config"})
@@ -58,7 +58,4 @@ public class AppInitializer extends WebMvcConfigurerAdapter implements WebApplic
         multipartResolver.setMaxUploadSize(10485760L);
         return multipartResolver;
     }
-
-
-
 }

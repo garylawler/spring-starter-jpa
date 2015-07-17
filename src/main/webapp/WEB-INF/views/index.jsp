@@ -20,6 +20,8 @@
 		}
 	</script>
 
+	Result from database: <c:out value="${requestScope.resultFromDatabase}"/>
+
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 			Welcome : ${pageContext.request.userPrincipal.name} | <a
 				href="javascript:formSubmit()"> Logout</a>

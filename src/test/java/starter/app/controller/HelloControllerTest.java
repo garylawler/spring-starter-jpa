@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import starter.app.controller.HelloController;
 import starter.app.service.HelloService;
 
 public class HelloControllerTest {
@@ -31,10 +30,10 @@ public class HelloControllerTest {
         MockitoAnnotations.initMocks(this);
         helloController = new HelloController();
         helloController.helloService = helloService;
-        when(helloService.getHelloViewLocation()).thenReturn(INDEX);
+        when(helloService.getFromDatabase("test")).thenReturn(INDEX);
         mockMvc = MockMvcBuilders.standaloneSetup(helloController).build();
 
-        requestBuilder = MockMvcRequestBuilders.get("/hello");
+        requestBuilder = MockMvcRequestBuilders.get("/hello?persistenceMethod=test");
     }
 
     @Test
