@@ -13,7 +13,12 @@ public class HelloService {
     protected HelloJpaDao helloJpaDao;
 
     @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW)
-    public String getFromDatabase(String method) {
-            return helloJpaDao.getById(1).getValue();
+    public String getFromDatabase() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(helloJpaDao.justSomeRandomMethodName(1).getValue());
+        stringBuilder.append(helloJpaDao.getById(1).getValue());
+
+        return stringBuilder.toString();
     }
 }

@@ -1,10 +1,5 @@
 package starter.app.controller;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -15,6 +10,11 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import starter.app.service.HelloService;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class HelloControllerTest {
 
@@ -30,10 +30,10 @@ public class HelloControllerTest {
         MockitoAnnotations.initMocks(this);
         helloController = new HelloController();
         helloController.helloService = helloService;
-        when(helloService.getFromDatabase("test")).thenReturn(INDEX);
+        when(helloService.getFromDatabase()).thenReturn(INDEX);
         mockMvc = MockMvcBuilders.standaloneSetup(helloController).build();
 
-        requestBuilder = MockMvcRequestBuilders.get("/hello?persistenceMethod=test");
+        requestBuilder = MockMvcRequestBuilders.get("/hello");
     }
 
     @Test
